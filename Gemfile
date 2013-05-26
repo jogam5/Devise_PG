@@ -5,6 +5,7 @@ gem 'pg'
 gem 'thin'
 gem "figaro", ">= 0.5.3"
 gem 'devise'
+gem "bootstrap-sass", "~> 2.3.1.2"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
