@@ -24,6 +24,18 @@ module Magazine
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
+    # don't generate RSpec tests for views and helpers
+  config.generators do |g|
+    g.test_framework :rspec, fixture: true
+    g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    g.view_specs false
+    g.helper_specs false
+    g.stylesheets = false
+    g.javascripts = false
+    g.helper = false
+  end
+
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -43,7 +55,7 @@ module Magazine
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
@@ -61,6 +73,8 @@ module Magazine
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    config.assets.initialize_on_precompile = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
